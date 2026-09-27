@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "Ohio Parcel Finder",
+  "short_name": "Parcel Finder",
+  "version": "1.0.0",
+  "description": "Find any Ohio street address on the right county's parcels map: type it, right-click it, or search it from the address bar.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "Find an Ohio parcel by address",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "omnibox": { "keyword": "parcel" },
+  "permissions": ["contextMenus", "storage"],
+  "host_permissions": ["https://geocoding.geo.census.gov/*"],
+  "minimum_chrome_version": "110"
+}
