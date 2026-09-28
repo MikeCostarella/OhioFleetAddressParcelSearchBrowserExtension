@@ -2,7 +2,7 @@
 // (popup.html?address=...) when a right-click or address-bar search needs the
 // visitor to choose between several matches.
 
-import { lookupWithFetch } from "./vendor/address-lookup/addressLookup.js";
+import { lookupWithFetch, MAX_LISTED } from "./vendor/address-lookup/addressLookup.js";
 
 const form = /** @type {HTMLFormElement} */ (document.getElementById("form"));
 const input = /** @type {HTMLInputElement} */ (document.getElementById("address"));
@@ -60,8 +60,14 @@ async function find(address) {
     openApp(r.links[0].url);
     return;
   }
-  say(r.links.length === 1 ? "Found it:" : `${r.links.length} matches. Pick the right one:`);
-  for (const link of r.links) {
+  say(
+    r.links.length === 1
+      ? "Found it:"
+      : r.links.length > MAX_LISTED
+        ? `${r.links.length} matches - showing the first ${MAX_LISTED}. Add the city or ZIP to narrow it down.`
+        : `${r.links.length} matches. Pick the right one:`,
+  );
+  for (const link of r.links.slice(0, MAX_LISTED)) {
     const li = document.createElement("li");
     const addr = document.createElement("div");
     addr.className = "addr";

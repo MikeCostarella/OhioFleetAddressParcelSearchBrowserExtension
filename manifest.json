@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Ohio Parcel Finder",
   "short_name": "Parcel Finder",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Find any Ohio street address on the right county's parcels map: type it, right-click it, or search it from the address bar.",
   "icons": {
     "16": "icons/icon16.png",
